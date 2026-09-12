@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/python
+#!/usr/bin/env python3
 import os,time
 opration_system_path="/storage/emulated/0/"
 red= "\033[31m"
