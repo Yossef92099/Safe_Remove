@@ -1,0 +1,65 @@
+#!/data/data/com.termux/files/usr/bin/python
+import os,time
+opration_system_path="/storage/emulated/0/"
+red= "\033[31m"
+green= "\033[32m"
+blue= "\033[34m"
+reset= "\033[0m"
+def FAKE_REMOVE():
+    file=input(f"{red}[*]Enter file path:\n")
+    if not os.path.exists(file):
+        print(f"{red}[!]Safe_Remove Error:Name none")
+    else:
+        print(f"{red}SAFE_REMOVE:{reset}FAKE_REMOVE......")
+        time.sleep(1.5)
+        print(f"{red}SAFE_REMOVE:{green}WELL DONE")
+        os.remove(file) 
+def REAL_REMOVE():
+    file=input(f"{red}[*]Enter file path:\n")
+    if not os.path.exists(file):
+        print(f"{red}[!]Safe_Remove Error:Name none")
+    else:
+        print(f"{red}SAFE_REMOVE:{reset}REAL_REMOVE......")
+        time.sleep(1.5)
+        size=os.path.getsize(file)
+        point=file.rfind(".")
+        if point != -1:
+            new=file[:point]+".bin"
+        else:
+            new=file+".bin"
+        os.rename(file,new)
+        with open(new,"wb")as f:
+            f.write(b"\x00"*size)
+        os.remove(new)
+        print(f"{red}SAFE_REMOVE:{green}WELL DONE")
+def INFO():
+    print(f"{blue}[!]real_remove-->help you to make Impossible to receve your file in Data Destruction zone")
+    print(f"{red}[Danger]you should use real_remove if you want buy your phone")
+    time.sleep(1)
+    print(f"{blue}[!]fake_remove-->help you to make usual delet")
+    
+def main():
+    print(f"{blue}="*50)
+    print(f"{blue} "*20+"Safe_Remove")
+    print(f"{blue}="*50)
+    print(f"{blue}")
+    while True:
+        print(f"{blue}[1]FAKE_REMOVE")
+        print(f"{blue}[2]REAL_REMOVE")
+        print(f"{blue}[3]INFO")
+        print(f"{blue}[4]EXIT")
+        print()
+        i=input("--->").lower()
+        if i in ["fake","fake_remove","1"]:
+            FAKE_REMOVE()
+        elif i in ["real","real_remove","2"]:
+            REAL_REMOVE()
+        elif i in ["info","3"]:
+            INFO()
+        elif i in ["exit","4"]:
+            exit()
+        else:
+            print(f"{reset}[-] please chose from choice")
+            continue
+if __name__ == "__main__":
+    main()
