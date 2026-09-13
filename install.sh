@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/data/data/com.termux/files/usr/bin/bash
 
 echo "[+] Checking for Python..."
 if ! command -v python3 &> /dev/null && ! command -v python &> /dev/null; then
@@ -21,6 +21,8 @@ fi
 cp Safe_Remove.py "$INSTALL_DIR/$SCRIPT_NAME"
 chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
 
+echo "[+] Requesting storage permissions..."
+termux-setup-storage
+
 echo "[+] Safe_Remove installed successfully!"
 echo "[+] You can now type 'Safe_Remove' from anywhere to run the tool!"
-
