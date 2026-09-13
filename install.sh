@@ -18,7 +18,7 @@ if [ ! -f "Safe_Remove" ]; then
     exit 1
 fi
 
-cp Safe_Remove"$INSTALL_DIR/$SCRIPT_NAME"
+cp Safe_Remove "$INSTALL_DIR/$SCRIPT_NAME"
 chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
 
 echo "[+] Requesting storage permissions..."
