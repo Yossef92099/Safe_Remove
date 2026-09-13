@@ -1,9 +1,26 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
-# إعطاء صلاحيات التنفيذ للملف الأساسي
-chmod +x Safe_Remove
+echo "[+] Checking for Python..."
+if ! command -v python3 &> /dev/null && ! command -v python &> /dev/null; then
+    echo "[!] Python is not installed. Installing Python automatically..."
+    pkg update -y && pkg install python -y
+else
+    echo "[✓] Python is already installed."
+fi
 
-# نسخ الأداة لمسار الـ Binaries العام في تيرموكس
-cp Safe_Remove $PREFIX/bin/Safe_Remove
+echo "[+] Installing Safe_Remove..."
 
-echo -e "\033[32m[+] Safe_Remove installed successfully! Type 'Safe_Remove' anywhere to run.\033[0m"
+INSTALL_DIR="/data/data/com.termux/files/usr/bin"
+SCRIPT_NAME="Safe_Remove"
+
+if [ ! -f "Safe_Remove.py" ]; then
+    echo "[!] Error: Safe_Remove.py file not found in repository!"
+    exit 1
+fi
+
+cp Safe_Remove.py "$INSTALL_DIR/$SCRIPT_NAME"
+chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
+
+echo "[+] Safe_Remove installed successfully!"
+echo "[+] You can now type 'Safe_Remove' from anywhere to run the tool!"
+
