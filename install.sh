@@ -13,7 +13,7 @@ echo "[+] Installing Safe_Remove..."
 INSTALL_DIR="/data/data/com.termux/files/usr/bin"
 SCRIPT_NAME="Safe_Remove"
 
-if [ ! -f "Safe_Remove.py" ]; then
+if [ ! -f "Safe_Remove" ]; then
     echo "[!] Error: Safe_Remove file not found in repository!"
     exit 1
 fi
